@@ -1,0 +1,48 @@
+.wrapper{
+    display: grid;
+    height: 98vh;
+    column-gap: 15px;
+    row-gap: 15px;
+    grid-template-areas:
+                        "head head"
+                        "side main"
+                        "side main";
+    grid-template-columns: 0.15fr 0.85fr;
+    grid-template-rows: 0.05fr 0.95fr;
+
+}
+.wrapper > header, main, aside{
+    background-color: aquamarine;
+    border: 4px solid #000;
+    border-radius: 5px;
+    text-align: center;
+    align-content: center;
+    font-family: sans-serif;
+    display: flex;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+header{
+    grid-area: head;
+}
+
+aside{
+    grid-area: side;
+}
+
+main{
+    grid-area: main;
+}
+
+header *{
+    margin: auto;
+}
+
+aside *{
+    margin: auto;
+}
+
+main *{
+    margin: auto;
+}
