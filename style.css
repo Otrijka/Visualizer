@@ -14,6 +14,8 @@
 .wrapper > header, main, aside{
     background-color: aquamarine;
     border: 5px solid #000;
+=======
+    border: 4px solid #000;
     border-radius: 5px;
     text-align: center;
     align-content: center;
@@ -25,14 +27,17 @@
 
 header{
     grid-area: head;
+    background-color:chartreuse;
 }
 
 aside{
     grid-area: side;
+    background-color: chocolate;
 }
 
 main{
     grid-area: main;
+    background-color: crimson;
 }
 
 header *{
