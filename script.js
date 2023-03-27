@@ -1,75 +1,114 @@
-let makeMatrix = (size) =>{
-    let matrix = [];
-    for (let i =0; i < size; i++){
-        matrix.push(new Array(size).fill(1));
-    }
-    return matrix;
-}
-
-class Matrix{
-    constructor(size){
-        this.size = size;
-        this.matrix = makeMatrix(size);
-    }
-
-    showMatrix(){
-        console.log(this.matrix);
-    }
-
-}
-
-    const num = 50;
-    const matrix = [];
-
-    for (let i = 0; i < num; i++) {
+function makeMatrix(size){
+  let matrix = [];
+  for (let i = 0; i < size; i++){
     matrix[i] = [];
-    for (let j = 0; j < num; j++) {
-        matrix[i][j] = "";
+    for (let j = 0; j < matrix[i].size; j++){
+      matrix[i][j] = "1";
     }
-    }
+  }
+  return matrix;
+}
 
-      // Получаем ссылку на div с классом "main-place"
-      const mainPlace = document.querySelector(".main-place");
+function getRandomInRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-      // Создаем таблицу
-      const table = document.createElement("table");
+function PaintTable(size){
+    this.matrixSize = size;
+    const matrix = makeMatrix(this.matrixSize);
 
-      // Проходим по строкам матрицы
-      for (let i = 0; i < matrix.length; i++) {
-        // Создаем строку таблицы
-        const tr = document.createElement("tr");
+    const mainPlace = document.querySelector(".mainPlace");
 
-        // Проходим по элементам строки матрицы
-        for (let j = 0; j < matrix.length; j++) {
-          // Создаем ячейку таблицы
-          const td = document.createElement("td");
+    const table = document.createElement("table");
 
-          // Устанавливаем текст ячейки равным значению элемента матрицы
-          td.innerText = matrix[i][j];
+    for (let i = 0; i < matrix.length; i++){
+      const tr = document.createElement("tr");
 
-          // Добавляем ячейку в строку таблицы
-          tr.appendChild(td);
-        }
+      for (let j = 0; j < matrix.length; j++){
+        const td = document.createElement("td");
 
-        // Добавляем строку в таблицу
-        table.appendChild(tr);
+        td.innerText = "";
+
+        tr.appendChild(td);
       }
+      table.appendChild(tr);
+    }
+    mainPlace.appendChild(table);
+  }
 
-      // Добавляем таблицу в div с классом "main-place"
-      mainPlace.appendChild(table);
+function eventChangeTableCellColor(){
+  let cells = document.querySelectorAll('td');
+  cells.forEach(cell => {
+    cell.addEventListener('click', function(){
 
-      const boxes = document.querySelectorAll('td');
+      if(this.style.backgroundColor == 'brown'){
+        this.style.backgroundColor = 'red';
+      }
+      else if(this.style.backgroundColor == 'red'){
+        this.style.backgroundColor = 'cadetblue';
+      }
+      else{
+        this.style.backgroundColor = 'brown';
+      }
       
-      // перебираем все элементы и назначаем обработчик события "click"
-      boxes.forEach(box => {
-        box.addEventListener('click', function() {
-          if(this.style.backgroundColor == 'white'){
-            this.style.backgroundColor = 'aqua'
-          }
-          else{
-            this.style.backgroundColor = 'white';
-          }
-        });
-      });
-
       
+    });
+  });
+}
+
+function makeMap(percent, size){
+  clearMap(size);
+  let marked = [];
+  let count = Number(size * size * percent / 100);
+  console.log(count);
+  for (let i = 0; i < count; i++){
+    let x = getRandomInRange(0,size - 1);
+    let y = getRandomInRange(0,size - 1);
+    let coords = document.querySelectorAll('tr');
+    if (marked.includes({y,x})){
+        i--;
+    }
+    else{
+      coords[y].childNodes[x].style.backgroundColor = 'brown';
+      marked.push({y,x});
+    }
+    console.log();
+  }
+}
+
+function clearMap(size){
+  let cells = document.querySelectorAll('tr');
+  for (let i = 0; i < size; i++){
+    for (let j = 0; j < size; j++){
+      cells[i].childNodes[j].style.backgroundColor = 'cadetblue';
+    }
+  }
+}
+
+function paintMorCells(){
+  let trArray = document.querySelectorAll('tr');
+  // Устанавливаем индекс, который будет использоваться для отображения td элементов по одному
+  let currentTdIndex = 0;
+  // Устанавливаем интервал в 1 секунду
+  let interval = setInterval(function() {
+    // Проверяем, есть ли еще td элементы, которые нужно отобразить
+    if (currentTdIndex < trArray.length) {
+      // Если да, то отображаем следующий tr элемент
+      trArray[currentTdIndex].style.visibility = 'visible';
+      // Увеличиваем индекс для следующего отображения
+      currentTdIndex++;
+    } else {
+      // Если нет, то очищаем интервал
+      clearInterval(interval);
+    }
+  }, 10);
+}
+      let size = prompt("Введите размер матрицы");
+      
+      while (size <= 0){
+        size = prompt("Введите корректный размер!");
+      }
+      PaintTable(Number(size));
+      paintMorCells();
+      makeMap(50, size);
+      eventChangeTableCellColor();

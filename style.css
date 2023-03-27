@@ -1,49 +1,71 @@
+body{
+    height: 95vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: deepskyblue;
+    
+
+    
+}
 .wrapper{
     display: grid;
-    height: 98vh;
-    column-gap: 15px;
-    row-gap: 15px;
+    height: 100%;
+    width: 100%;
     grid-template-areas:
                         "head head"
                         "side main"
                         "side main";
-    grid-template-columns: 0.15fr 0.85fr;
-    grid-template-rows: 0.05fr 0.95fr;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 5% 95%;
 
 
     align-content: center;
     font-family: sans-serif;
-    display: flex;
-    font-size: 40px;
+    
+    font-size: 25px;
     font-weight: 700;
 }
-
+.wrapper header, aside{
+    border: 2px solid black;
+}
 header{
     grid-area: head;
-    background-color:chartreuse;
+    
 }
 
 aside{
     grid-area: side;
-    background-color: chocolate;
+    
 }
-
 main{
+    height: 100%;
+    width: 100%;
     grid-area: main;
-    background-color: crimson;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding-right: 1;
 }
 
-header *{
-    margin: auto;
-    padding: 5px;
+.mainPlace{
+    height: 100%;
+    width: 98%;
 }
 
-aside *{
-    margin: auto;
-    padding: 10px;
+table{
+    border: 2px solid black;
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
 }
 
-main *{
-    margin: auto;
-    padding: 10px;
+table tr{
+    visibility: hidden;
+}
+
+table td{
+    border: 1px solid black;
+    background-color:cadetblue;
 }
