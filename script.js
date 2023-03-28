@@ -2,8 +2,8 @@ function makeMatrix(size){
   let matrix = [];
   for (let i = 0; i < size; i++){
     matrix[i] = [];
-    for (let j = 0; j < matrix[i].size; j++){
-      matrix[i][j] = "1";
+    for (let j = 0; j < size; j++){
+      matrix[i][j] = 0;
     }
   }
   return matrix;
@@ -13,20 +13,16 @@ function getRandomInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function PaintTable(size){
-    this.matrixSize = size;
-    const matrix = makeMatrix(this.matrixSize);
-
+function PaintTable(size, percent,matrix){
     const mainPlace = document.querySelector(".mainPlace");
 
     const table = document.createElement("table");
 
-    for (let i = 0; i < matrix.length; i++){
+    for (let i = 0; i < size; i++){
       const tr = document.createElement("tr");
 
-      for (let j = 0; j < matrix.length; j++){
+      for (let j = 0; j < size; j++){
         const td = document.createElement("td");
-
         td.innerText = "";
 
         tr.appendChild(td);
@@ -34,33 +30,35 @@ function PaintTable(size){
       table.appendChild(tr);
     }
     mainPlace.appendChild(table);
-  }
-
-function eventChangeTableCellColor(){
-  let cells = document.querySelectorAll('td');
-  cells.forEach(cell => {
-    cell.addEventListener('click', function(){
-
-      if(this.style.backgroundColor == 'brown'){
-        this.style.backgroundColor = 'red';
-      }
-      else if(this.style.backgroundColor == 'red'){
-        this.style.backgroundColor = 'cadetblue';
-      }
-      else{
-        this.style.backgroundColor = 'brown';
-      }
-      
-      
-    });
-  });
+    makeMap(percent,size,matrix);
+    eventChangeTableCellColor(matrix,size);
 }
 
-function makeMap(percent, size){
-  clearMap(size);
+function eventChangeTableCellColor(matrix, size) {
+  let cells = document.querySelectorAll('td');
+  console.log(cells);
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener('click', function() {
+      if (this.style.backgroundColor == 'brown') {
+        this.style.backgroundColor = 'green';
+        matrix[Math.floor(i / size)][i - size * Math.floor(i / size)] = 1;
+      } 
+      else if (this.style.backgroundColor == 'green') {
+        this.style.backgroundColor = 'cadetblue';
+        matrix[Math.floor(i / size)][i - size * Math.floor(i / size)] = 0;
+      } 
+      else {
+        this.style.backgroundColor = 'brown';
+        matrix[Math.floor(i / size)][i - size * Math.floor(i / size)] = -1;
+      }
+      console.log(matrix);
+    });
+  }
+}
+
+function makeMap(percent, size, matrix){
   let marked = [];
   let count = Number(size * size * percent / 100);
-  console.log(count);
   for (let i = 0; i < count; i++){
     let x = getRandomInRange(0,size - 1);
     let y = getRandomInRange(0,size - 1);
@@ -69,10 +67,10 @@ function makeMap(percent, size){
         i--;
     }
     else{
+      matrix[y][x] = -1;
       coords[y].childNodes[x].style.backgroundColor = 'brown';
       marked.push({y,x});
     }
-    console.log();
   }
 }
 
@@ -85,30 +83,15 @@ function clearMap(size){
   }
 }
 
-function paintMorCells(){
-  let trArray = document.querySelectorAll('tr');
-  // Устанавливаем индекс, который будет использоваться для отображения td элементов по одному
-  let currentTdIndex = 0;
-  // Устанавливаем интервал в 1 секунду
-  let interval = setInterval(function() {
-    // Проверяем, есть ли еще td элементы, которые нужно отобразить
-    if (currentTdIndex < trArray.length) {
-      // Если да, то отображаем следующий tr элемент
-      trArray[currentTdIndex].style.visibility = 'visible';
-      // Увеличиваем индекс для следующего отображения
-      currentTdIndex++;
-    } else {
-      // Если нет, то очищаем интервал
-      clearInterval(interval);
-    }
-  }, 10);
-}
-      let size = prompt("Введите размер матрицы");
-      
-      while (size <= 0){
-        size = prompt("Введите корректный размер!");
-      }
-      PaintTable(Number(size));
-      paintMorCells();
-      makeMap(50, size);
-      eventChangeTableCellColor();
+let btnGenerate = document.querySelector('.makeTableBtn');
+let matrix;
+      btnGenerate.addEventListener('click', function(){
+        if (document.querySelector('.mainPlace').childElementCount != 0)document.querySelector('.mainPlace').removeChild(document.querySelector('table'));
+
+        let size = document.querySelector('.inputSize').value;
+        let percent = document.querySelector('.wallPercent').value;
+        matrix = makeMatrix(size);
+        PaintTable(size,percent,matrix);
+        console.log(matrix);
+      })
+
