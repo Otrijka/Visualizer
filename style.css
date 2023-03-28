@@ -47,7 +47,8 @@ aside{
     
 }
 aside *{
-    margin:10px;
+    margin-top: 15px;
+    margin-left: 15px;
     font-size: 20px;
 }
 main{
@@ -104,7 +105,11 @@ input{
 
 .makeTableBtn{
     font-size: 20px;
-    padding: 6px;
+    padding: 8px;
+}
+
+.buttonSend{
+    margin: 0;
 }
 
 .commonOptions{
