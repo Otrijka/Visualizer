@@ -1,39 +1,33 @@
-body{
+body {
     height: 95vh;
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: deepskyblue;
-    
-
-    
+    background-color: black;
 }
-.wrapper{
+
+.wrapper {
     display: grid;
     height: 100%;
     width: 100%;
     grid-template-areas:
-                        "head head"
-                        "side main"
-                        "side main";
-    grid-template-columns: 30% 70%;
-    grid-template-rows: 5% 95%;
+        "head head"
+        "side main"
+        "side main";
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 10% 90%;
 
-
-    align-content: center;
-    font-family: sans-serif;
-    
-    font-size: 20px;
     font-weight: 700;
 }
-.wrapper aside{
+
+.wrapper aside {
     border: 1px solid black;
-    border-radius: 7px;
-    margin-left: 10px;
+    border-radius: 10px;
 }
-header{
+
+header {
     grid-area: head;
-    
+
     padding-top: 5px;
     padding-left: 21px;
     text-align: start;
@@ -41,26 +35,21 @@ header{
     font-weight: 700;
 }
 
-aside{
+aside {
     grid-area: side;
     background-color: aqua;
-    
 }
-aside *{
-    margin-top: 15px;
-    margin-left: 15px;
-    font-size: 20px;
-}
-main{
+
+main {
     height: 100%;
     width: 100%;
     grid-area: main;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
 }
 
-.mainPlace{
+.mainPlace {
     height: 100%;
     width: 100%;
     display: flex;
@@ -68,68 +57,78 @@ main{
     align-items: center;
 }
 
-table{
+table {
     height: 100%;
     width: 80%;
     table-layout: fixed;
     border-collapse: collapse;
 }
 
-table td{
-    border: 1px solid black;
-    background-color:darkgreen;
+table td {
+    border: 1px solid gray;
+
 }
 
-.menu{
-    margin-left: 10px;
+.menu {
+    font-size: 25px;
+    height:30%;
+    margin-top: 2%;
     display: flex;
     flex-direction: column;
     justify-content: top;
-    align-items: start;
-}
-.tableInputText{
-    width: 100%;
-    text-align: start;
+    align-items: center;
 }
 
-input{
+.inputSize {
+    padding: 0.2%;
     font-size: 20px;
-    padding: 5px;
+    width: 45%;
+    text-align: center;
 }
 
-.wallPercent{
-    padding: 5px;
+.wallPercent {
+    padding: 0.2%;
     text-align: center;
     font-size: 20px;
+    width: 45%;
 }
 
-.makeTableBtn{
+.makeTableBtn {
     font-size: 20px;
-    padding: 8px;
+    width: 45%;
+    height: 20%;
 }
 
-.buttonSend{
-    margin: 0;
-}
 
-.commonOptions{
-    margin-top: 20px;
-    width: 100%;
-    height: 100%;
-}
-.commonOptions .makeWallsBtn, .makePointsBtn{
-    padding: 0;
-    margin: 0;
-    font-size: 20px;
+.commonOptions {
+    display: flex;
+    max-width: 100%;
+    height: 60%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
     
-    width: 30%;
-    height: 100px;
-
-    transition: width 0.25s ease;
 }
-.makeWallsBtn{
+
+.commonOptions * {
+    font-size: 20px;
+    width: 50%;
+    height: 8%;
+    transition: height 0.2s ease;
+}
+
+.makeWallsBtn {
     background-color: gray;
 }
-.makePointsBtn{
+
+.makeStartBtn {
     background-color: yellow;
+}
+
+.makeEndBtn {
+    background-color: orange;
+}
+
+.makeGrassBtn {
+    background-color: darkGreen;
 }

@@ -1,8 +1,8 @@
-function makeMatrix(){
+function makeMatrix() {
   let matrix = [];
-  for (let i = 0; i < size; i++){
+  for (let i = 0; i < size; i++) {
     matrix[i] = [];
-    for (let j = 0; j < size; j++){
+    for (let j = 0; j < size; j++) {
       matrix[i][j] = 0;
     }
   }
@@ -13,94 +13,44 @@ function getRandomInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function PaintTable(percent){
-    const mainPlace = document.querySelector(".mainPlace");
+function PaintTable(percent) {
+  const mainPlace = document.querySelector(".mainPlace");
 
-    const table = document.createElement("table");
+  const table = document.createElement("table");
 
-    for (let i = 0; i < size; i++){
-      const tr = document.createElement("tr");
+  for (let i = 0; i < size; i++) {
+    const tr = document.createElement("tr");
 
-      for (let j = 0; j < size; j++){
-        const td = document.createElement("td");
-        td.innerText = "";
+    for (let j = 0; j < size; j++) {
+      const td = document.createElement("td");
+      td.style.backgroundColor = 'darkGreen';
 
-        tr.appendChild(td);
-      }
-      table.appendChild(tr);
+      tr.appendChild(td);
     }
-    mainPlace.appendChild(table);
-    makeMap(percent);
-    makePoints();
-}
-
-function makeWalls() {
-  let cells = document.querySelectorAll('td');
-  document.querySelector('.makePointsBtn').style.width = 30 + '%';
-  document.querySelector('.makeWallsBtn').style.width = 50 + '%';
-  for (let i = 0; i < cells.length; i++) {
-    
-    cells[i].addEventListener('click', function() {
-      let y = Math.floor(i / size);
-      let x = i - size * Math.floor(i / size);
-      if (this.style.backgroundColor == 'gray'){
-        this.style.backgroundColor = 'darkGreen';
-        matrix[y][x] = 0;
-      }
-      else{
-        this.style.backgroundColor = 'gray';
-        matrix[y][x] = -1;
-      }
-      console.log(matrix);
-    });
+    table.appendChild(tr);
   }
+  mainPlace.appendChild(table);
+  makeMap(percent);
 }
 
-function makePoints() {
-  let cells = document.querySelectorAll('td');
-  document.querySelector('.makeWallsBtn').style.width = 30 + '%';
-  document.querySelector('.makePointsBtn').style.width = 50 + '%';
-  for (let i = 0; i < cells.length; i++) {
-   
-    cells[i].addEventListener('click', function() {
-      let y = Math.floor(i / size);
-      let x = i - size * Math.floor(i / size);
-      if (this.style.backgroundColor == 'yellow'){
-        this.style.backgroundColor = 'darkGreen';
-        matrix[y][x] = "0";
-      }
-      else{
-        this.style.backgroundColor = 'yellow';
-        matrix[y][x] = "1";
-      }
-      console.log(matrix);
-    });
-  }
+function makeGrass() {
+  let cells = document.querySelector('td');
 }
 
-function makeMap(percent){
+function makeMap(percent) {
   let marked = [];
   let count = Number(size * size * percent / 100);
-  for (let i = 0; i < count; i++){
-    let x = getRandomInRange(0,size - 1);
-    let y = getRandomInRange(0,size - 1);
+  for (let i = 0; i < count; i++) {
+    let x = getRandomInRange(0, size - 1);
+    let y = getRandomInRange(0, size - 1);
     let coords = document.querySelectorAll('tr');
-    if (marked.includes({y,x})){
-        i--;
+    if (marked.includes({ y, x })) {
+      i--;
     }
-    else{
-      matrix[y][x] = -1;
+    else {
+      matrix[y][x] = "x";
       coords[y].childNodes[x].style.backgroundColor = 'grey';
-      marked.push({y,x});
-    }
-  }
-}
-
-function clearMap(){
-  let cells = document.querySelectorAll('tr');
-  for (let i = 0; i < size; i++){
-    for (let j = 0; j < size; j++){
-      cells[i].childNodes[j].style.backgroundColor = 'green';
+      marked.push({ y, x });
     }
   }
 }
@@ -167,9 +117,6 @@ function init() {
 }
 
 
-function findDist(start,finish,matrix){
-
-}
 
 function search() {
   init();
@@ -225,24 +172,103 @@ function search() {
   //no solution by default
   return [];
 }
+//Начало программы
+window.matrix;
+window.size
+let start;
+let end;
+let path = [];
 
+document.querySelector('.makeTableBtn').addEventListener('click', function () {
+  if (document.querySelector('.mainPlace').childElementCount != 0) document.querySelector('.mainPlace').removeChild(document.querySelector('table'));
+  start = undefined;
+  end = undefined;
+  size = document.querySelector('.inputSize').value;
+  if (size < 10) {
+    size = 10;
+    document.querySelector('.inputSize').value = size;
+  }
+  if (size > 100) {
+    size = 100;
+    document.querySelector('.inputSize').value = size;
+  }
+  let percent = document.querySelector('.wallPercent').value;
+  matrix = makeMatrix();
+  PaintTable(percent);
+})
 
-document.querySelector('.makeTableBtn').addEventListener('click', function(){
-        if (document.querySelector('.mainPlace').childElementCount != 0)document.querySelector('.mainPlace').removeChild(document.querySelector('table'));
+document.querySelector('.makeWallsBtn').addEventListener('click', function () {
+  document.querySelector('.makeStartBtn').style.height = 8 + '%';
+  document.querySelector('.makeEndBtn').style.height = 8 + '%';
+  document.querySelector('.makeGrassBtn').style.height = 8 + '%';
+  document.querySelector('.makeWallsBtn').style.height = 15 + '%';
+  let cells = document.querySelectorAll('td');
+  for (let i = 0; i < cells.length; i++) {
+    let y = Math.floor(i / size);
+    let x = i - size * y;
+    cells[i].addEventListener('click', function () {
+      if (cells[i].style.backgroundColor == 'yellow') start = undefined;
+      if (cells[i].style.backgroundColor == 'orange') end = undefined;
+      cells[i].style.backgroundColor = 'gray';
+      matrix[y][x] = 'x';
+    })
+  }
+})
 
-        size = document.querySelector('.inputSize').value;
-        let percent = document.querySelector('.wallPercent').value;
-        matrix = makeMatrix();
-        PaintTable(percent);
-        console.log(matrix);
-      })
+document.querySelector('.makeStartBtn').addEventListener('click', function () {
+  document.querySelector('.makeWallsBtn').style.height = 8 + '%';
+  document.querySelector('.makeEndBtn').style.height = 8 + '%';
+  document.querySelector('.makeGrassBtn').style.height = 8 + '%';
+  document.querySelector('.makeStartBtn').style.height = 15 + '%';
+  let cells = document.querySelectorAll('td');
+  for (let i = 0; i < cells.length; i++) {
+    let y = Math.floor(i / size);
+    let x = i - size * y;
+    cells[i].addEventListener('click', function () {
+      if (cells[i].style.backgroundColor == 'orange') end = undefined;
+      if (start == undefined) {
+        cells[i].style.backgroundColor = 'yellow';
+        matrix[y][x] = 'start';
+        start = { Y: y, X: x };
+      }
+    })
+  }
+})
 
-document.querySelector('.makeWallsBtn').addEventListener('click', makeWalls);
-document.querySelector('.makePointsBtn').addEventListener('click', makePoints);
+document.querySelector('.makeEndBtn').addEventListener('click', function () {
+  document.querySelector('.makeStartBtn').style.height = 8 + '%';
+  document.querySelector('.makeWallsBtn').style.height = 8 + '%';
+  document.querySelector('.makeGrassBtn').style.height = 8 + '%';
+  document.querySelector('.makeEndBtn').style.height = 15 + '%';
+  let cells = document.querySelectorAll('td');
+  for (let i = 0; i < cells.length; i++) {
+    let y = Math.floor(i / size);
+    let x = i - size * y;
+    cells[i].addEventListener('click', function () {
+      if (cells[i].style.backgroundColor == 'yellow') start = undefined;
+      if (end == undefined) {
+        cells[i].style.backgroundColor = 'orange';
+        matrix[y][x] = 'end';
+        end = { Y: y, X: x };
+      }
+    })
+  }
+})
 
-
-      window.matrix;
-      window.size;
-      let start;
-      let end;
-      let path = [];
+document.querySelector('.makeGrassBtn').addEventListener('click', function () {
+  document.querySelector('.makeStartBtn').style.height = 8 + '%';
+  document.querySelector('.makeEndBtn').style.height = 8 + '%';
+  document.querySelector('.makeWallsBtn').style.height = 8 + '%';
+  document.querySelector('.makeGrassBtn').style.height = 15 + '%';
+  let cells = document.querySelectorAll('td');
+  for (let i = 0; i < cells.length; i++) {
+    let y = Math.floor(i / size);
+    let x = i - size * y;
+    cells[i].addEventListener('click', function () {
+      if (cells[i].style.backgroundColor == 'yellow') start = undefined;
+      if (cells[i].style.backgroundColor == 'orange') end = undefined;
+      cells[i].style.backgroundColor = 'darkGreen';
+      matrix[y][x] = 0;
+    })
+  }
+})
