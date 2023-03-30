@@ -65,6 +65,14 @@ function findPath(startY, startX, endY, endX) {
             pathIsFind = false;
             console.log("No path");
             // return the traced path
+            if (pathIsFind == false){
+                let cell = document.querySelectorAll('td');
+                for (let i = 0; i < cell.length; i++){
+                    if (cell[i].style.backgroundColor == 'aqua'){
+                        cell[i].style.backgroundColor = 'red';
+                    }
+                }
+            }
             return;
         }
         else {
@@ -116,7 +124,6 @@ function findPath(startY, startX, endY, endX) {
                 }
             }
         }
-        console.log('start drawing');
         drawPath();
     }, 30)
 }
