@@ -53,72 +53,70 @@ function init() {
 
 
 function findPath(startY, startX, endY, endX) {
-    console.log('start search');
     init();
     let startP = grid[startY][startX];
     let endP = grid[endY][endX];
     let current;
     openSet.push(startP);
-
-    while (openSet.length > 0) {
-        //assumption lowest index is the first one to begin with
-        let lowestIndex = 0;
-        for (let i = 0; i < openSet.length; i++) {
-            if (openSet[i].f < openSet[lowestIndex].f) {
-                lowestIndex = i;
-            }
-        }
-        current = openSet[lowestIndex];
-
-        if (current === endP) {
-            let temp = current;
-            path.push(temp);
-            while (temp.parent) {
-                path.push(temp.parent);
-                temp = temp.parent;
-            }
-            pathIsFind = true;
-            console.log("Path has found");
+    let intervalId = setInterval(function () {
+        if (openSet.length == 0) {
+            clearInterval(intervalId);
+            //no solution by default
+            pathIsFind = false;
+            console.log("No path");
             // return the traced path
-            return path.reverse();
+            return;
         }
-
-        //remove current from openSet
-        openSet.splice(lowestIndex, 1);
-        //add current to closedSet
-        closedSet.push(current);
-
-        let neighbors = current.neighbors;
-
-        for (let i = 0; i < neighbors.length; i++) {
-            let neighbor = neighbors[i];
-
-            if (!closedSet.includes(neighbor)) {
-                let possibleG = current.g + 1;
-
-                if (!openSet.includes(neighbor)) {
-                    openSet.push(neighbor);
-                } else if (possibleG >= neighbor.g) {
-                    continue;
+        else {
+            let lowestIndex = 0;
+            for (let i = 0; i < openSet.length; i++) {
+                if (openSet[i].f < openSet[lowestIndex].f) {
+                    lowestIndex = i;
                 }
+            }
+            current = openSet[lowestIndex];
+            let cell = document.querySelectorAll('td')[current.x * size + current.y].style.backgroundColor = 'aqua';
 
-                neighbor.g = possibleG;
-                neighbor.h = heuristic(neighbor, end);
-                neighbor.f = neighbor.g + neighbor.h;
-                neighbor.parent = current;
+            if (current === endP) {
+                let temp = current;
+                path.push(temp);
+                while (temp.parent) {
+                    path.push(temp.parent);
+                    temp = temp.parent;
+                }
+                pathIsFind = true;
+                // return the traced path
+                clearInterval(intervalId);
+                console.log("Path has found");
+            }
+
+            //remove current from openSet
+            openSet.splice(lowestIndex, 1);
+            //add current to closedSet
+            closedSet.push(current);
+
+            let neighbors = current.neighbors;
+
+            for (let i = 0; i < neighbors.length; i++) {
+                let neighbor = neighbors[i];
+
+                if (!closedSet.includes(neighbor)) {
+                    let possibleG = current.g + 1;
+
+                    if (!openSet.includes(neighbor)) {
+                        openSet.push(neighbor);
+                    } else if (possibleG >= neighbor.g) {
+                        continue;
+                    }
+
+                    neighbor.g = possibleG;
+                    neighbor.h = heuristic(neighbor, grid[endY][endX]);
+                    neighbor.f = neighbor.g + neighbor.h;
+                    neighbor.parent = current;
+                }
             }
         }
-    }
-
-    //no solution by default
-    pathIsFind = false;
-    console.log("No path");
-    let temp = current;
-    path.push(temp);
-    while (temp.parent) {
-        path.push(temp.parent);
-        temp = temp.parent;
-    }
-    // return the traced path
-    return path.reverse();
+        console.log('start drawing');
+        drawPath();
+    }, 30)
 }

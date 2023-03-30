@@ -3,7 +3,16 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-image: url(astar-back.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    font-family: sans-serif;
 }
 
 .wrapper {
@@ -14,30 +23,17 @@ body {
         "head head"
         "side main"
         "side main";
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 25% 75%;
     grid-template-rows: 10% 90%;
 
     font-weight: 700;
 }
 
-.wrapper aside {
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
-header {
-    grid-area: head;
-
-    padding-top: 5px;
-    padding-left: 21px;
-    text-align: start;
-    font-size: 30px;
-    font-weight: 700;
-}
-
 aside {
     grid-area: side;
-    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: darkgray;
 }
 
 main {
@@ -58,6 +54,7 @@ main {
 }
 
 table {
+    border: 2px solid black;
     height: 100%;
     width: 80%;
     table-layout: fixed;
@@ -66,11 +63,11 @@ table {
 
 table td {
     border: 1px solid gray;
-
+    transition: background-color 0.15s ease;
 }
 
 .menu {
-    font-size: 25px;
+    font-size: 20px;
     height:30%;
     margin-top: 2%;
     display: flex;
@@ -80,36 +77,45 @@ table td {
 }
 
 .inputSize {
-    padding: 0.2%;
+    border-radius: 10px;
+    padding: 1%;
     font-size: 20px;
     width: 45%;
     text-align: center;
 }
 
 .wallPercent {
-    padding: 0.2%;
+    padding: 1%;
     text-align: center;
     font-size: 20px;
     width: 45%;
+    border-radius: 10px;
 }
 
 .makeTableBtn {
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 16px;
     width: 45%;
     height: 20%;
+    border-radius: 10px;
 }
 
 .findPath {
-    font-size: 20px;
+    font-weight: 700;
+    margin-top: 1%;
+    font-size: 16px;
     width: 45%;
     height: 20%;
+    border-radius: 10px;
 }
 
 
 .commonOptions {
-    display: flex;
+    margin-top: 20%;
+    display: block;
     max-width: 100%;
-    height: 60%;
+    height: 70%;
+    text-align: center;
     flex-direction: column;
     align-items: center;
     justify-content: start;
@@ -117,10 +123,13 @@ table td {
 }
 
 .commonOptions * {
-    font-size: 20px;
+    margin-top: 1%;
+    border-radius: 10px;
+    font-size: 16px;
     width: 50%;
-    height: 8%;
-    transition: height 0.2s ease;
+    height: 10%;
+    
+    transition: height 0.23s ease;
 }
 
 .makeWallsBtn {
@@ -136,5 +145,5 @@ table td {
 }
 
 .makeGrassBtn {
-    background-color: darkGreen;
+    background-color: darkGray;
 }

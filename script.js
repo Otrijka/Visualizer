@@ -23,7 +23,7 @@ function PaintTable() {
 
     for (let j = 0; j < size; j++) {
       const td = document.createElement("td");
-      td.style.backgroundColor = 'darkGreen';
+      td.style.backgroundColor = 'darkGray';
 
       tr.appendChild(td);
     }
@@ -49,7 +49,7 @@ function makeMap() {
     }
     else {
       matrix[y][x] = "x";
-      coords[y].childNodes[x].style.backgroundColor = 'grey';
+      coords[y].childNodes[x].style.backgroundColor = 'gray';
       marked.push({ y, x });
     }
   }
@@ -59,19 +59,15 @@ function pointsHere() {
   return start != undefined && end != undefined;
 }
 
-function drawPath(){
+function drawPath() {
   let cell = document.querySelectorAll('td');
   let indexArr = [];
-  let draw = setInterval(function(){
-    if (path.length == 0){
-      if (pathIsFind == false){
-        indexArr.forEach(index =>{
-          cell[index].style.backgroundColor = 'red';
-        })
-      }
+  let draw = setInterval(function () {
+    if (path.length == 0) {
+
       clearInterval(draw);
     }
-    else{
+    else {
       let current = path[0];
       let x = current.y;
       let y = current.x;
@@ -80,7 +76,7 @@ function drawPath(){
       cell[index].style.backgroundColor = 'blue';
       path.shift();
     }
-  },60)
+  }, 60)
 }
 
 //Начало программы
@@ -149,7 +145,7 @@ document.querySelector('.makeStartBtn').addEventListener('click', function () {
       if (start == undefined) {
         cells[i].style.backgroundColor = 'yellow';
         matrix[y][x] = 'start';
-        start = { Y: y, X: x };
+        start = { y: y, x: x };
       }
     })
   }
@@ -169,7 +165,7 @@ document.querySelector('.makeEndBtn').addEventListener('click', function () {
       if (end == undefined) {
         cells[i].style.backgroundColor = 'orange';
         matrix[y][x] = 'end';
-        end = { Y: y, X: x };
+        end = { y: y, x: x };
       }
     })
   }
@@ -187,19 +183,19 @@ document.querySelector('.makeGrassBtn').addEventListener('click', function () {
     cells[i].addEventListener('click', function () {
       if (cells[i].style.backgroundColor == 'yellow') start = undefined;
       if (cells[i].style.backgroundColor == 'orange') end = undefined;
-      cells[i].style.backgroundColor = 'darkGreen';
+      cells[i].style.backgroundColor = 'darkGray';
       matrix[y][x] = 0;
     })
   }
 })
 
-document.querySelector('.findPath').addEventListener('click',function(){
-  if (pointsHere()){
+document.querySelector('.findPath').addEventListener('click', function () {
+  if (pointsHere()) {
     document.getElementsByClassName('findPath').disabled = true;
-    findPath(start.Y,start.X,end.Y,end.X);
-    drawPath();
+    findPath(start.y, start.x, end.y, end.x);
+    console.log("start drawing");
   }
-  else{
+  else {
     document.getElementsByClassName('findPath').disabled = true;
   }
 })
