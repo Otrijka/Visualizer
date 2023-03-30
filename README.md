@@ -1,2 +1,3 @@
-# Visualizer
-Данный проект был выдан нам нам 6 модуле обучения в HITS. Этот проект будет состоять из визуализации разных алгоритмов.
+<h1 align="center">Hi there, I'm <a href="https://daniilshat.ru/" target="_blank">Aleksandr</a> 
+<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
+<h3 align="center">Computer science student, IT news writer from Russia 🇷🇺</h3>
