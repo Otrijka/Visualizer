@@ -193,7 +193,6 @@ document.querySelector('.findPath').addEventListener('click', function () {
   if (pointsHere()) {
     document.getElementsByClassName('findPath').disabled = true;
     findPath(start.y, start.x, end.y, end.x);
-    console.log("start drawing");
   }
   else {
     document.getElementsByClassName('findPath').disabled = true;
