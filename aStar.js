@@ -71,7 +71,7 @@ function findPath(startY, startX, endY, endX) {
                 let cell = document.querySelectorAll('td');
                 for (let i = 0; i < cell.length; i++) {
                     if (cell[i].style.backgroundColor == 'aqua') {
-                        cell[i].style.backgroundColor = 'red';
+                        cell[i].style.backgroundColor = 'darkRed';
                     }
                 }
             }
