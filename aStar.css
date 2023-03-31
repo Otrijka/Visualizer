@@ -62,8 +62,7 @@ table {
 }
 
 table td {
-    border: 1px solid gray;
-    transition: background-color 0.15s ease;
+    transition: background-color 0.18s ease;
 }
 
 .menu {
