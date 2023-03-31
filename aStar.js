@@ -54,6 +54,8 @@ function init() {
 
 function findPath(startY, startX, endY, endX) {
     init();
+    let openSet = [];
+    let closedSet = [];
     let startP = grid[startY][startX];
     let endP = grid[endY][endX];
     let current;
@@ -65,10 +67,10 @@ function findPath(startY, startX, endY, endX) {
             pathIsFind = false;
             console.log("No path");
             // return the traced path
-            if (pathIsFind == false){
+            if (pathIsFind == false) {
                 let cell = document.querySelectorAll('td');
-                for (let i = 0; i < cell.length; i++){
-                    if (cell[i].style.backgroundColor == 'aqua'){
+                for (let i = 0; i < cell.length; i++) {
+                    if (cell[i].style.backgroundColor == 'aqua') {
                         cell[i].style.backgroundColor = 'red';
                     }
                 }

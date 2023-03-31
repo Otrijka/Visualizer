@@ -87,8 +87,6 @@ let percent;
 let start = {};
 let end = {};
 
-let openSet = [];
-let closedSet = [];
 let path = [];
 let grid;
 
