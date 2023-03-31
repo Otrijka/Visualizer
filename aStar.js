@@ -68,10 +68,9 @@ function findPath(startY, startX, endY, endX) {
             console.log("No path");
             // return the traced path
             if (pathIsFind == false) {
-                let cell = document.querySelectorAll('td');
-                for (let i = 0; i < cell.length; i++) {
-                    if (cell[i].style.backgroundColor == 'aqua') {
-                        cell[i].style.backgroundColor = 'darkRed';
+                for (let i = 0; i < cells.length; i++) {
+                    if (cells[i].style.backgroundColor == allPathColor) {
+                        cells[i].style.backgroundColor = emptyPathColor;
                     }
                 }
             }
@@ -85,16 +84,18 @@ function findPath(startY, startX, endY, endX) {
                 }
             }
             current = openSet[lowestIndex];
-            let cell = document.querySelectorAll('td')[current.x * size + current.y].style.backgroundColor = 'aqua';
+            if (current.x * size + current.y != startY * size + startX && current.x * size + current.y != endY * size + endX){
+                cells[current.x * size + current.y].style.backgroundColor = allPathColor;
+            }
 
             if (current === endP) {
                 let temp = current;
-                path.push(temp);
                 while (temp.parent) {
                     path.push(temp.parent);
                     temp = temp.parent;
                 }
                 pathIsFind = true;
+                path.splice(path.length - 1);
                 // return the traced path
                 clearInterval(intervalId);
                 console.log("Path has found");
@@ -127,5 +128,5 @@ function findPath(startY, startX, endY, endX) {
             }
         }
         drawPath();
-    }, 30)
+    }, 13)
 }
