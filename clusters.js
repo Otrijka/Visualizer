@@ -23,7 +23,7 @@ function kMean() {
   if (centroidsCounter == undefined) return;
   makeStartCentriods(centroidsCounter);
 
-  for (let iterator = 0; iterator < 100; iterator++) {
+  for (let iterator = 0; iterator < 50; iterator++) {
 
     let distancePointsToCentroids = new Array(points.length);
     for (let i = 0; i < points.length; i++) {
