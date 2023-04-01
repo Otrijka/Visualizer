@@ -3,7 +3,7 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-image: url(claster-back.jpg);
+    background-image: url(cluster-back.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -72,6 +72,5 @@ main {
 .myCanvas{
 
     background-color: darkgray;
-    border: 2px solid black;
-    border-radius: 10px;
+
 }
