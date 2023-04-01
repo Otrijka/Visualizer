@@ -113,8 +113,8 @@ findBtn.addEventListener('click', function () {
   }
   else {
     centroidsCounter = document.querySelector('.clusterCounter').value;
-    if (centroidsCounter < 1) centroidsCounter = 1;
-    if (centroidsCounter > 9) centroidsCounter = 9;
+    if (centroidsCounter < 1){centroidsCounter = 1;document.querySelector('.clusterCounter').value = 1};
+    if (centroidsCounter > 9){centroidsCounter = 9;document.querySelector('.clusterCounter').value = 9};
     kMean();
     drawClusters(centroidsCounter);
 
