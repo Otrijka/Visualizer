@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');
 
 
 //переменные для логики
-let centroidsCounter = 2;
+let centroidsCounter;
 let points = [];
 let centroids = [];
 let answer = [];

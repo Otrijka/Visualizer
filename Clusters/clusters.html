@@ -1,3 +1,5 @@
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,12 +13,20 @@
 
 <body>
     <div class="wrapper">
-        <header></header>
+        <header>
+            <div class="headerBar">
+                <button class="A-star"><span>A-star</span></button>
+                <button class="Ant-alg"><span>Ant-alg</span></button>
+                <button class="Genetic-alg"><span>Genetic-alg</span></button>
+            </div>
+        </header>
         <aside>
             <div class="menu">
-                <input class="clusterCounter" type="number" name="tableSize" placeholder="Количество кластеров" min="1"max="9">
+                <div>Количество кластеров</div>
+                <input class="clusterCounter" type="number" name="tableSize" min="1"max="9">
                 <br>
                 <button class="findClusters">Найти Кластеры</button>
+                <button class="clearMap">Очистить поле</button>
             </div>
         </aside>
         <main>
