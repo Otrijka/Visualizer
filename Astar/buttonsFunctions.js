@@ -101,3 +101,12 @@ findPathButton.addEventListener('click', function () {
     findPathButton.style.disabled = true;
   }
 })
+
+
+let cluster = document.querySelector('.Cluster-alg');
+cluster.addEventListener('click', function() {
+  cluster.classList.add('clicked');
+  setTimeout(function() {
+    window.location.href = 'http://127.0.0.1:5500/Clusters/clusters.html';
+  }, 500);
+})

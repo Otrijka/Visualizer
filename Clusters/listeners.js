@@ -18,8 +18,15 @@ findBtn.addEventListener('click', function () {
     }
     else {
         centroidsCounter = document.querySelector('.clusterCounter').value;
-        if (centroidsCounter < 1) { centroidsCounter = 1; document.querySelector('.clusterCounter').value = 1 };
-        if (centroidsCounter > 9) { centroidsCounter = 9; document.querySelector('.clusterCounter').value = 9 };
+        if (centroidsCounter < 1) {
+            centroidsCounter = 1;
+            document.querySelector('.clusterCounter').value = 1
+        };
+        if (centroidsCounter > 9) {
+            centroidsCounter = 9;
+            document.querySelector('.clusterCounter').value = 9
+        };
+        
         kMean();
         drawClusters(centroidsCounter);
 
@@ -32,4 +39,26 @@ findBtn.addEventListener('click', function () {
             ctx.fill();
         }
     }
+})
+
+//Очистка поля
+let clearButton = document.querySelector('.clearMap');
+clearButton.addEventListener('click', function () {
+    var canvas = document.querySelector('.myCanvas');
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    document.querySelector('.clusterCounter').value = '';
+    centroidsCounter = undefined;
+    points = [];
+    centroids = [];
+    answer = [];
+})
+
+//Переход на другой алгоритм
+let Astar = document.querySelector('.A-star');
+Astar.addEventListener('click', function () {
+    Astar.classList.add('clicked');
+    setTimeout(function () {
+        window.location.href = 'http://127.0.0.1:5500/Astar/astar.html';
+    }, 500);
 })
