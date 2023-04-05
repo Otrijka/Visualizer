@@ -7,19 +7,14 @@ function getRandomInRange(min, max) {
 function makeStartCentriods() {
     let usedIndexis = [];
     while (centroids.length != centroidsCounter) {
-        //Эта строчка исправила все проблемы (шлубокое копировние нахрен)
+        //Эта строчка исправила все проблемы (глубокое копировние)
         const pointsClone = JSON.parse(JSON.stringify(points));
         let index = getRandomInRange(0, pointsClone.length - 1);
-        console.log("Индекс №",centroids.length, " ",index);
+
         if (usedIndexis.includes(index) == false) {
             centroids.push(pointsClone[index]);
             usedIndexis.push(index);
-            console.log("included");
         }
-        else{
-            console.log("didnt included");
-        }
-        console.log(centroids);
     }
     return centroids;
 }
