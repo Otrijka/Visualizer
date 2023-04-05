@@ -5,12 +5,15 @@ function getRandomInRange(min, max) {
 
 //Рандомная выборка стартовых центроид
 function makeStartCentriods() {
+    let usedIndexis = [];
     while (centroids.length != centroidsCounter) {
-        //Эта строчка исправила все проблемы (шлубокое копировние нахрен)
+        //Эта строчка исправила все проблемы (глубокое копировние)
         const pointsClone = JSON.parse(JSON.stringify(points));
         let index = getRandomInRange(0, pointsClone.length - 1);
-        if (!centroids.includes(pointsClone[index])) {
+
+        if (usedIndexis.includes(index) == false) {
             centroids.push(pointsClone[index]);
+            usedIndexis.push(index);
         }
     }
     return centroids;
