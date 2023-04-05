@@ -26,18 +26,12 @@ findBtn.addEventListener('click', function () {
             centroidsCounter = 9;
             document.querySelector('.clusterCounter').value = 9
         };
-        
+
+        centroids = [];
+        answer = [];
+
         kMean();
         drawClusters(centroidsCounter);
-
-        for (let i = 0; i < centroidsCounter; i++) {
-            let x = centroids[i].x;
-            let y = centroids[i].y;
-            ctx.beginPath();
-            ctx.arc(x, y, 4, 0, 2 * Math.PI);
-            ctx.fillStyle = 'yellow';
-            ctx.fill();
-        }
     }
 })
 
