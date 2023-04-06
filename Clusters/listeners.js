@@ -48,11 +48,3 @@ clearButton.addEventListener('click', function () {
     answer = [];
 })
 
-//Переход на другой алгоритм
-let Astar = document.querySelector('.A-star');
-Astar.addEventListener('click', function () {
-    Astar.classList.add('clicked');
-    setTimeout(function () {
-        window.location.href = 'http://127.0.0.1:5500/Astar/astar.html';
-    }, 500);
-})

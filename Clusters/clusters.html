@@ -13,16 +13,20 @@
 
 <body>
     <div class="wrapper">
-        <header>
-            <div class="headerBar">
-                <button class="A-star"><span>A-star</span></button>
-                <button class="Ant-alg"><span>Ant-alg</span></button>
-                <button class="Genetic-alg"><span>Genetic-alg</span></button>
-            </div>
-        </header>
+        <div class="header">
+                <form action="/Astar/astar.html" class="form1">
+                    <button>Astar</button>
+                </form>
+                <form action="/Astar/astar.html" class="form1">
+                    <button>Ant-alg</button>
+                </form>
+                <form action="/Astar/astar.html" class="form1">
+                    <button>Genetic-alg</button>
+                </form>
+        </div>
         <aside>
             <div class="menu">
-                <div>Количество кластеров</div>
+                <label>Количество кластеров</label>
                 <input class="clusterCounter" type="number" name="tableSize" min="1"max="9">
                 <br>
                 <button class="findClusters">Найти Кластеры</button>
