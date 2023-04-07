@@ -11,18 +11,21 @@
 
 <body>
     <div class="wrapper">
-        <header>
-            <div class="headerBar">
-                <button class="Cluster-alg"><span>Cluster-alg</span></button>
-                <button class="Ant-alg">Ant-alg</button>
-                <button class="Genetic-alg">Genetic-alg</button>
-            </div>
-        </header>
+        <div class="header">
+            <form action="/Clusters/clusters.html" class="form1">
+                <button>Clusters</button>
+            </form>
+            <form action="/Clusters/clusters.html" class="form1">
+                <button>Ant-alg</button>
+            </form>
+            <form action="/Clusters/clusters.html" class="form1">
+                <button>Genetic-alg</button>
+            </form>
+        </div>
         <aside>
             <div class="menu">
                 <label>Размер поля</label>
-                <input class="inputSize" type="number" name="tableSize" min="10"
-                    max="100" maxlength="3">
+                <input class="inputSize" type="number" name="tableSize" min="10" max="100" maxlength="3">
                 <br>
                 <label>Количество стенок в (%)</label>
                 <select class="wallPercent" name="wallPercent" id="wallPercent">
@@ -54,10 +57,9 @@
         </main>
     </div>
     <script src="variables.js"></script>
-    <script src="buttonsFunctions.js"></script>
+    <script src="listeners.js"></script>
     <script src="aStar.js"></script>
     <script src="utils.js"></script>
-    <script src="clusters.js"></script>
 </body>
 
 </html>

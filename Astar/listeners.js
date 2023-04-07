@@ -1,6 +1,7 @@
 
 buttonsInit();
 
+//Кнопка создания таблицы
 makeTableButton.addEventListener('click', function () {
   if (document.querySelector('.mainPlace').childElementCount != 0) document.querySelector('.mainPlace').removeChild(document.querySelector('table'));
   start = undefined;
@@ -20,6 +21,7 @@ makeTableButton.addEventListener('click', function () {
   PaintTable();
 })
 
+//Кнопка установки стен
 setWallsButton.addEventListener('click', function () {
   setStartButton.style.height = 8 + '%';
   setEndButton.style.height = 8 + '%';
@@ -37,6 +39,7 @@ setWallsButton.addEventListener('click', function () {
   }
 })
 
+//Кнопка установки старта
 setStartButton.addEventListener('click', function () {
   setWallsButton.style.height = 8 + '%';
   setEndButton.style.height = 8 + '%';
@@ -56,6 +59,7 @@ setStartButton.addEventListener('click', function () {
   }
 })
 
+//Кнопка установки конца
 setEndButton.addEventListener('click', function () {
   setStartButton.style.height = 8 + '%';
   setWallsButton.style.height = 8 + '%';
@@ -75,6 +79,7 @@ setEndButton.addEventListener('click', function () {
   }
 })
 
+//Кнопка установки
 setPathWayButton.addEventListener('click', function () {
   setStartButton.style.height = 8 + '%';
   setEndButton.style.height = 8 + '%';
@@ -92,6 +97,7 @@ setPathWayButton.addEventListener('click', function () {
   }
 })
 
+//Кнопка поиска пути
 findPathButton.addEventListener('click', function () {
   if (pointsHere()) {
     findPathButton.style.disabled = true;
@@ -100,13 +106,4 @@ findPathButton.addEventListener('click', function () {
   else {
     findPathButton.style.disabled = true;
   }
-})
-
-
-let cluster = document.querySelector('.Cluster-alg');
-cluster.addEventListener('click', function() {
-  cluster.classList.add('clicked');
-  setTimeout(function() {
-    window.location.href = 'http://127.0.0.1:5500/Clusters/clusters.html';
-  }, 500);
 })
