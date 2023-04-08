@@ -18,6 +18,12 @@ findBtn.addEventListener('click', function () {
     }
     else {
         centroidsCounter = document.querySelector('.clusterCounter').value;
+
+        if (points.length < centroidsCounter){
+            alert(`Недостаточно объектов на поле для ${centroidsCounter} кластеров`);
+            return;
+        }
+
         if (centroidsCounter < 1) {
             centroidsCounter = 1;
             document.querySelector('.clusterCounter').value = 1
