@@ -56,6 +56,11 @@ function makeMap() {
   }
 }
 
+//Генерация лабиринта
+function makeLabirint(labSize) {
+
+}
+
 //Проверка на наличие точек старта и конца
 function pointsHere() {
   return start != undefined && end != undefined;
@@ -76,5 +81,5 @@ function drawPath() {
       cells[index].style.backgroundColor = findedPathColor;
       path.shift();
     }
-  }, 80)
+  }, 100)
 }
