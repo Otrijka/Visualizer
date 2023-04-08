@@ -73,7 +73,7 @@ aside {
 
 main {
     height: 100%;
-    width: 95%;
+    width: 100%;
     grid-area: main;
     display: flex;
     justify-content: center;
