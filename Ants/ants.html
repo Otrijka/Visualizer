@@ -1,0 +1,49 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ants.css">
+    <title>Algorithm</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <form action="/Astar/astar.html" class="form1">
+                <button>Astar</button>
+            </form>
+            <form action="/Ants/ants.html" class="form1">
+                <button>Ant-alg</button>
+            </form>
+            <form action="/Genetic/genetic.html" class="form1">
+                <button>Genetic-alg</button>
+            </form>
+        </div>
+        <aside>
+            <div class="menu">
+
+                <button id="bForMCircles">Создание муравейников</button>
+                <button id="bForMWays">Вывести пути муравьёв</button>
+                <button id="Clear">Очистка поля</button>
+            </div>
+        </aside>
+        <main>
+            <div class="canvasContainer">
+                <canvas id="canvas" height="700px" width="700px"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <script src="variables.js"></script>
+    <script src="utils.js"></script>
+    <script src="listeners.js"></script>
+    <script src="ants.js"></script>
+    <script src="antsTest.js"></script>
+</body>
+
+</html>
