@@ -1,9 +1,9 @@
 body {
-    height: 95vh;
-    width: 99%;
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    background-image: url(astar-back.jpg);
+    background-color: #81BECE;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -11,13 +11,14 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font-family: sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
 }
 
 .wrapper {
     display: grid;
-    height: 100%;
-    width: 100%;
+    height: 97vh;
+    width: 97vw;
     grid-template-areas:
         "head head"
         "side main"
@@ -40,19 +41,12 @@ body {
     text-align: center;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
 
 .header * {
     width: 30%;
     height: 100%;
-    font-size: 15px;
-    font-weight: 600;
-    background-color: darkgray;
-    border: 2px solid black;
-    border-radius: 8px;
+    background-color: #036280;
+    border-radius: 10px;
 }
 
 .form1 * {
@@ -60,14 +54,27 @@ a {
     height: 100%;
     font-size: 14px;
     border: none;
-    font-weight: 600;
+    font-weight: 500;
+    color: white;
+    transition: font-size 0.2s ease;
+}
+
+.form1 {
+    transition: scale 0.2s ease-in;
+}
+
+.form1:hover {
+    scale: 1.2;
+}
+
+.form1 *:hover {
+    font-size: 16px;
 }
 
 aside {
     grid-area: side;
-    border: 2px solid black;
     border-radius: 10px;
-    background-color: darkgray;
+    background-color: #378BA4;
     font-size: 20px;
 }
 
@@ -87,6 +94,24 @@ main {
     justify-content: start;
     align-items: center;
 }
+
+
+.menu button {
+    transition: scale 0.2s ease;
+}
+
+.menu button:hover {
+    scale: 1.05;
+}
+
+.commonOptions button {
+    transition: scale 0.2s ease;
+}
+
+.commonOptions button:hover {
+    scale: 1.05;
+}
+
 
 table {
     border: 2px solid black;

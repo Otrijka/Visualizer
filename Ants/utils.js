@@ -13,7 +13,7 @@ function makeDistances() {
 }
 function clear() {
     let itterations = 0;
-    ctx.fillStyle = 'darkGray';
+    ctx.fillStyle = "rgb(192, 214, 236)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < cities.length; i++) {
@@ -38,7 +38,7 @@ function sleep(ms) {
 function drowBestPath(bestPath) {
     clear();
 
-    ctx.strokeStyle = "darkBlue";
+    ctx.strokeStyle = "Blue";
     ctx.beginPath();
     ctx.moveTo(cities[bestPath[0]].x, cities[bestPath[0]].y);
 
@@ -66,7 +66,7 @@ function drowBestPath(bestPath) {
 
 async function drowPath(paths, bestPath) {
     ctx.strokeStyle = "green";
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 5;
 
     let i = 0;
 
