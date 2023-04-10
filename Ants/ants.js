@@ -15,7 +15,8 @@ makeAWays.addEventListener("click", function () {
     let paths = [];
     let pathLengths = [];
     // Основной цикл алгоритма
-    for (let iter = 0; iter < 300; iter++) {
+    let iterWithoutChanges = 0;
+    while (iterWithoutChanges < 1000) {
         // Инициализируем массивы путей и длин путей для каждого муравья
         for (let i = 0; i < numAnts; i++) {
             let path = [];
@@ -63,6 +64,7 @@ makeAWays.addEventListener("click", function () {
             if (pathLengths[i] < bestPathLength) {
                 bestPath = paths[i];
                 bestPathLength = pathLengths[i];
+                iterWithoutChanges = 0;
             }
         }
 
@@ -79,11 +81,11 @@ makeAWays.addEventListener("click", function () {
             pheromones[city2][city1] += 4 / bestPathLength;
         }
 
-
-
+        iterWithoutChanges++;
+        
     }
     // Выводим лучший путь и его длину
     console.log(bestPathLength);
-    console.log(pheromones);
+    console.log(paths);
     drowPath(paths, bestPath);
 });

@@ -57,7 +57,7 @@ function drowBestPath(bestPath) {
         ctx.fill();
 
         ctx.fillStyle = 'white';
-        ctx.font = "bold 16px Arial";
+        ctx.font = "bold 15px Arial";
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(i, cities[i].x, cities[i].y);
@@ -101,7 +101,7 @@ async function drowPath(paths, bestPath) {
             ctx.fillText(i, cities[i].x, cities[i].y);
         }
         
-        await sleep(30);
+        await sleep(40);
 
     }
 
