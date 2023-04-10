@@ -31,6 +31,10 @@ clearMap.addEventListener("click", function () {
 
 
 canv.addEventListener('mousedown', function (e) {
+    if (cities.length === 30) {
+        alert("Поле переполнено");
+        return;
+    }
     if (currentEvents === events.add) {
 
         ctx.fillStyle = 'black';
@@ -41,6 +45,13 @@ canv.addEventListener('mousedown', function (e) {
         let x = e.offsetX;
         let y = e.offsetY;
         ctx.fill();
+
+        ctx.fillStyle = 'white';
+        ctx.font = "bold 16px Arial";
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(cities.length, x, y);
+
         cities.push({ x: x, y: y });
         bestPath = [];
         bestPathLength = Infinity;

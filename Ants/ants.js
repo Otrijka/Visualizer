@@ -59,7 +59,6 @@ makeAWays.addEventListener("click", function () {
             pathLengths.push(pathLength);
         }
 
-        // Находим лучший путь и его длину
         for (let i = 0; i < paths.length; i++) {
             if (pathLengths[i] < bestPathLength) {
                 bestPath = paths[i];
@@ -84,6 +83,7 @@ makeAWays.addEventListener("click", function () {
 
     }
     // Выводим лучший путь и его длину
-    console.log('draw', bestPathLength);
+    console.log(bestPathLength);
+    console.log(pheromones);
     drowPath(paths, bestPath);
 });

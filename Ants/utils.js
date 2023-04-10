@@ -17,13 +17,16 @@ function clear() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < cities.length; i++) {
-
         ctx.fillStyle = 'black';
-
-
         ctx.beginPath();
         ctx.arc(cities[i].x, cities[i].y, 15, 0, Math.PI * 2);
         ctx.fill();
+
+        ctx.fillStyle = 'white';
+        ctx.font = "bold 16px Arial";
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(i, cities[i].x, cities[i].y);
     }
 
 }
@@ -46,17 +49,27 @@ function drowBestPath(bestPath) {
     }
     ctx.closePath();
     ctx.stroke();
+
+    for (let i = 0; i < cities.length; i++) {
+        ctx.fillStyle = 'black';
+        ctx.beginPath();
+        ctx.arc(cities[i].x, cities[i].y, 15, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = 'white';
+        ctx.font = "bold 16px Arial";
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(i, cities[i].x, cities[i].y);
+    }
 }
 
 async function drowPath(paths, bestPath) {
     ctx.strokeStyle = "green";
     ctx.lineWidth = 2;
 
-
-
     let i = 0;
 
-    
     while (i < paths.length) {
         clear();
 
@@ -64,20 +77,31 @@ async function drowPath(paths, bestPath) {
         ctx.moveTo(cities[paths[i][0]].x, cities[paths[i][0]].y);
         for (let j = 0; j < paths[i].length - 1; j++) {
 
-
             ctx.lineTo(cities[paths[i][j + 1]].x, cities[paths[i][j + 1]].y);
             ctx.stroke();
-
-
-
+                
         }
         ctx.closePath();
         ctx.stroke();
 
 
-        i+= Math.floor(paths.length / 100);
+        i += Math.floor(paths.length / 100);
+        
 
-        await sleep(40);
+        for (let i = 0; i < cities.length; i++) {
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+            ctx.arc(cities[i].x, cities[i].y, 15, 0, Math.PI * 2);
+            ctx.fill();
+    
+            ctx.fillStyle = 'white';
+            ctx.font = "bold 16px Arial";
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(i, cities[i].x, cities[i].y);
+        }
+        
+        await sleep(30);
 
     }
 
