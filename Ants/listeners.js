@@ -19,7 +19,7 @@ makeCities.addEventListener("click", function () {
 
 clearMap.addEventListener("click", function () {
 
-    ctx.fillStyle = 'darkGray';
+    ctx.fillStyle = "rgb(192, 214, 236)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     cities = [];
     distances = [];
