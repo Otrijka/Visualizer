@@ -3,10 +3,6 @@ let distances = [];
 canv = document.getElementById('canvas');
 ctx = canv.getContext('2d');
 
-canv.width = 600;
-canv.height = 600;
-
-
 
 
 let bestPath;

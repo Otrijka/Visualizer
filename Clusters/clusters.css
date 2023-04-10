@@ -1,9 +1,9 @@
 body {
-    height: 95vh;
-    width: 99%;
+    height: 99%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    background-image: url(cluster-back.jpg);
+    background-color: #81BECE;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -11,14 +11,14 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
-    font-family: sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
 }
 
 .wrapper {
     display: grid;
-    height: 100%;
-    width: 100%;
+    height: 97vh;
+    width: 97vw;
     grid-template-areas:
         "head head"
         "side main"
@@ -30,6 +30,7 @@ body {
     margin-left: 1%;
     margin-top: 0.5%;
 }
+
 .header {
     grid-area: head;
     display: flex;
@@ -40,32 +41,40 @@ body {
     text-align: center;
 }
 
-a{
-    text-decoration: none;
-    color: black;
-}
-.header *{
+
+.header * {
     width: 30%;
     height: 100%;
-    font-size: 15px;
-    font-weight: 600;
-    background-color: darkgray;
-    border: 2px solid black;
-    border-radius: 8px;
+    background-color: #036280;
+    border-radius: 10px;
 }
 
-.form1 *{
+.form1 * {
     width: 100%;
     height: 100%;
     font-size: 14px;
     border: none;
-    font-weight: 600;
+    font-weight: 500;
+    color: white;
+    transition: font-size 0.2s ease;
 }
+
+.form1 {
+    transition: scale 0.2s ease-in;
+}
+
+.form1:hover {
+    scale: 1.2;
+}
+
+.form1 button:hover{
+    font-size: 16px;
+}
+
 aside {
     grid-area: side;
-    border: 2px solid black;
     border-radius: 10px;
-    background-color: darkgray;
+    background-color: #378BA4;
     font-size: 20px;
 }
 
@@ -79,8 +88,8 @@ main {
 }
 
 .mainPlace {
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,14 +98,22 @@ main {
 .menu {
     margin-top: 2%;
     font-size: 20px;
-    height:30%;
+    height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: top;
     align-items: center;
 }
 
-.clusterCounter{
+.menu button{
+    transition: scale 0.2s ease;
+}
+
+.menu button:hover{
+    scale: 1.05;
+}
+
+.clusterCounter {
     border-radius: 10px;
     padding: 1%;
     font-size: 20px;
@@ -104,7 +121,8 @@ main {
     height: 15%;
     text-align: center;
 }
-.canvasContainer{
+
+.canvasContainer {
     height: 100%;
     width: 100%;
     display: flex;
@@ -112,26 +130,25 @@ main {
     align-items: center;
 }
 
-.myCanvas{
-    border: 2px solid black;
+.myCanvas {
     border-radius: 10px;
-    background-color: darkgray;
+    background-color: rgb(192, 214, 236);
 
 }
 
-.findClusters{
-    font-weight: 700;
+.findClusters {
+    font-weight: 600;
     font-size: 16px;
     border-radius: 10px;
     width: 45%;
     height: 18%;
 }
-.clearMap{
-    font-weight: 700;
+
+.clearMap {
+    font-weight: 600;
     font-size: 16px;
     margin-top: 1%;
     border-radius: 10px;
     width: 45%;
     height: 18%;
 }
-
