@@ -132,5 +132,5 @@ function findPath(startY, startX, endY, endX) {
             }
         }
         drawPath();
-    }, 20)
+    }, 10)
 }

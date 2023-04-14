@@ -72,7 +72,7 @@ function drawPath() {
       cells[index].style.backgroundColor = findedPathColor;
       path.shift();
     }
-  }, 100)
+  }, 50)
 }
 
 //Генерация лабиринта
