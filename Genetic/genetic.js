@@ -26,6 +26,7 @@ function makeNewGeneration(populationSize){
 
         reproduction(population[fatherIndex].way,population[motherIndex].way);
     }
+
     population.sort((individual1, individual2) => individual1.length - individual2.length);
     population.splice(Math.ceil(population.length / 2));
 }
@@ -83,10 +84,10 @@ function geneticAlg() {
     makeFirstPopulation(populationSize);
 
     let generationWithoutChanges = 0;
-    let prev = population[0].length;
+    let bestPath = population[0].length;
 
     let changeGeneration = setInterval(()=>{
-        if (generationWithoutChanges >= 150){
+        if (generationWithoutChanges >= 350){
             clearInterval(changeGeneration);
             drowPath(population[0].way,'blue');
             return;
@@ -95,12 +96,12 @@ function geneticAlg() {
         makeNewGeneration(populationSize);
         drowPath(population[0].way);
         
-        if (prev > population[0].length){
-            prev = population[0].length;
+        if (bestPath > population[0].length){
+            bestPath = population[0].length;
             generationWithoutChanges = 0;
         }
         generationWithoutChanges++;
         
-    },10)
+    },8)
 }
 

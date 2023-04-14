@@ -126,7 +126,7 @@ table {
 }
 
 table td {
-    transition: background-color 0.20s ease-in;
+    transition: background-color 0.15s ease-in;
 }
 
 .menu {
@@ -146,14 +146,6 @@ table td {
     width: 42%;
     height: 10%;
     text-align: center;
-}
-
-.wallPercent {
-    padding: 1%;
-    text-align: center;
-    font-size: 20px;
-    width: 42%;
-    border-radius: 10px;
 }
 
 .makeTableBtn {

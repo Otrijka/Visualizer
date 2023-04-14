@@ -4,11 +4,17 @@ buttonsInit();
 //Кнопка создания таблицы
 makeTableButton.addEventListener('click', function () {
   if (document.querySelector('.mainPlace').childElementCount != 0) document.querySelector('.mainPlace').removeChild(document.querySelector('table'));
+  setPathWayButton.disabled = false;
+  setWallsButton.disabled = false;
+  setEndButton.disabled = false;
+  setStartButton.disabled = false;
+  findPathButton.disabled = false;
+  
   start = undefined;
   end = undefined;
   size = document.querySelector('.inputSize').value;
-  if (size < 10) {
-    size = 10;
+  if (size < 20) {
+    size = 20;
     document.querySelector('.inputSize').value = size;
   }
   if (size > 100) {
@@ -16,7 +22,6 @@ makeTableButton.addEventListener('click', function () {
     document.querySelector('.inputSize').value = size;
   }
   grid = new Array(Number(size));
-  percent = document.querySelector('.wallPercent').value;
   matrix = makeMatrix(size);
   PaintTable();
 })
@@ -102,8 +107,11 @@ findPathButton.addEventListener('click', function () {
   if (pointsHere()) {
     findPathButton.style.disabled = true;
     findPath(start.y, start.x, end.y, end.x);
-  }
-  else {
-    findPathButton.style.disabled = true;
+    setPathWayButton.disabled = true;
+    setWallsButton.disabled = true;
+    setEndButton.disabled = true;
+    setStartButton.disabled = true;
+    findPathButton.disabled = true;
+    makeTableButton.disabled = false;
   }
 })

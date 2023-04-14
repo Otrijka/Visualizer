@@ -33,10 +33,10 @@ function buttonsInit() {
 }
 
 //Цвета
-let trailColor = 'darkGray';
+let trailColor = 'rgb(192, 214, 236)';
 let wallColor = 'gray';
 let startColor = 'yellow';
 let endColor = 'orange';
-let allPathColor = 'aqua';
+let allPathColor = 'rgb(10, 233, 159)';
 let findedPathColor = 'blue';
 let emptyPathColor = 'darkRed';

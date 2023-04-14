@@ -15,7 +15,7 @@ makeAWays.addEventListener("click", function () {
     // Основной цикл алгоритма
     let iterWithoutChanges = 0;
     let intervalId = setInterval(() => {
-        if (iterWithoutChanges < 200) {
+        if (iterWithoutChanges < 400) {
             // Инициализируем массивы путей и длин путей для каждого муравья
             for (let i = 0; i < numAnts; i++) {
                 let path = [];
