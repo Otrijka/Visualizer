@@ -76,8 +76,8 @@ function findPath(startY, startX, endY, endX) {
                         cells[i].style.backgroundColor = emptyPathColor;
                     }
                 }
-                alert("Пути не существует!");
             }
+            alert("Пути не существует!");
             return;
         }
         else {
@@ -132,5 +132,5 @@ function findPath(startY, startX, endY, endX) {
             }
         }
         drawPath();
-    }, 12)
+    }, 20)
 }
