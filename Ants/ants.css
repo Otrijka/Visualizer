@@ -142,17 +142,6 @@ main {
     background-color: darkgray;
 }
 
-
-#bForMCircles{
-    margin-top: 3%;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 600;
-    width: 45%;
-    height: 15%;
-    text-align: center;
-}
-
 #bForMWays{
     border-radius: 10px;
     margin-top: 1%;
