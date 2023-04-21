@@ -1,0 +1,46 @@
+</html>
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ants.css">
+    <title>Algorithm</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <form action="/Astar/astar.html" class="form1">
+                <button>Astar</button>
+            </form>
+            <form action="/Clusters/clusters.html" class="form1">
+                <button>Clusters</button>
+            </form>
+            <form action="/Genetic/genetic.html" class="form1">
+                <button>Genetic</button>
+            </form>
+        </div>
+        <aside>
+            <div class="menu">
+                <button id="bForMWays">Найти путь</button>
+                <button id="Clear">Очистить поле</button>
+            </div>
+        </aside>
+        <main>
+            <div class="canvasContainer">
+                <canvas id="canvas" height="800px" width="800px"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <script src="variables.js"></script>
+    <script src="utils.js"></script>
+    <script src="listeners.js"></script>
+    <script src="ants.js"></script>
+</body>
+
+</html>
