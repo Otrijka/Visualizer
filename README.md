@@ -5,5 +5,5 @@
 <h3>My team:
 <ul font-size="32px">
   <li><h3><a href="https://vk.com/katkavdoteishet20minut" target="_blank">Nikita-Armatyra</a><img src="https://usagif.com/wp-content/uploads/gif/beer-67.gif.webp" height="30"/></li>
-  <li><h3><a href="https://vk.com/vitya.oa00" target="_blank">Viktor</a><img src="https://media.tenor.com/kvNnNCaDstAAAAAi/baby-workout-the-boss-baby-family-business.gif" height="50"/></li>
+  <li><h3><a href="https://vk.com/vitya.oa00" target="_blank">Viktya-Gantelya</a><img src="https://media.tenor.com/kvNnNCaDstAAAAAi/baby-workout-the-boss-baby-family-business.gif" height="50"/></li>
   </ul>
